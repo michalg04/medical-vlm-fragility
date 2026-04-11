@@ -194,19 +194,5 @@ results/{model}_{task}_embeddings_tsne.png
 
 ---
 
-## File Overview
-
-```
-config.py                  - DatasetConfig dataclass + all task/model definitions
-vlm_utils.py               - Shared VLM inference (make_pipe, gen_w_img, to_pil)
-create_dataset.py          - Step 1: build medical_vqa_dataset.csv
-evaluate_vqa.py            - Step 2: VLM VQA + GPT judging
-analyze_prompts.py         - Step 3: prompt sensitivity metrics
-generate_descriptions.py   - Step 4a: VLM free-text descriptions
-evaluate_descriptions.py   - Step 4b: GPT Yes/No on descriptions
-extract_embeddings.py      - Step 5a: vision encoder feature extraction
-tsne_analysis.py           - Step 5b: t-SNE visualization
-```
-
 Intermediate files are plain CSVs so every step is independently inspectable
 and re-runnable. GPT API calls are cached to JSON to avoid redundant requests.
