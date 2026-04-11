@@ -154,21 +154,7 @@ Three GPT prompt variants are tested per description:
 
 ### Step 5 - Embedding Analysis
 
-Extract visual encoder features for each image:
-
-```
-python extract_embeddings.py \
-  --model gemma \
-  --task brain_tumor
-```
-
-Output:
-
-```
-results/{model}_{task}_embeddings.pt
-```
-
-Visualise with t-SNE:
+Extract visual encoder features and visualise with t-SNE:
 
 ```
 python tsne_analysis.py \
@@ -176,7 +162,7 @@ python tsne_analysis.py \
   --task brain_tumor
 ```
 
-Or process all embedding files at once:
+Or re-run t-SNE plots for all existing embedding files at once:
 
 ```
 python tsne_analysis.py --all
