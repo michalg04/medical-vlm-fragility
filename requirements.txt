@@ -8,3 +8,7 @@ tqdm
 openai
 scikit-learn
 matplotlib
+numpy
+python-dateutil
+six
+typing-extensions
