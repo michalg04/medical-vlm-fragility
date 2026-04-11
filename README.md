@@ -20,20 +20,6 @@ export OPENAI_API_KEY=sk-...
 
 ---
 
-## Quick Start
-
-Run a simple VQA evaluation:
-
-```
-python src/evaluate_vqa.py \
-  --model gemma \
-  --task pneumonia \
-  --prompt_type ab \
-  --one_word True
-```
-
----
-
 ## Full Pipeline
 
 ### Step 1 - Create Dataset
@@ -169,7 +155,3 @@ Output:
 results/{model}_{task}_embeddings_tsne.png
 ```
 
----
-
-Intermediate files are plain CSVs so every step is independently inspectable
-and re-runnable. GPT API calls are cached to JSON to avoid redundant requests.
