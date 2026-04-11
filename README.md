@@ -30,7 +30,7 @@ export OPENAI_API_KEY=sk-...
 Run a simple VQA evaluation:
 
 ```
-python evaluate_vqa.py \
+python src/evaluate_vqa.py \
   --model gemma \
   --task pneumonia \
   --prompt_type ab \
@@ -46,7 +46,7 @@ python evaluate_vqa.py \
 Sample K images per class for each task and save the metadata manifest:
 
 ```
-python create_dataset.py
+python src/create_dataset.py
 ```
 
 Output:
@@ -66,7 +66,7 @@ Options:
 Run a VLM on one task and judge responses with GPT:
 
 ```
-python evaluate_vqa.py \
+python src/evaluate_vqa.py \
   --model medgemma \
   --task brain_tumor \
   --all_prompts True
@@ -91,7 +91,7 @@ Options:
 Compute accuracy, sensitivity, specificity, F1, and variance across prompts:
 
 ```
-python analyze_prompts.py \
+python src/analyze_prompts.py \
   --model medgemma \
   --task pneumonia
 ```
@@ -114,7 +114,7 @@ Computes:
 **Generate descriptions:**
 
 ```
-python generate_descriptions.py \
+python src/generate_descriptions.py \
   --model gemma \
   --task pneumonia
 ```
@@ -128,7 +128,7 @@ results/{model}_{task}_descriptions.csv
 **Evaluate descriptions:**
 
 ```
-python evaluate_descriptions.py \
+python src/evaluate_descriptions.py \
   --model gemma \
   --task pneumonia
 ```
@@ -157,7 +157,7 @@ Three GPT prompt variants are tested per description:
 Extract visual encoder features and visualise with t-SNE:
 
 ```
-python tsne_analysis.py \
+python src/tsne_analysis.py \
   --model gemma \
   --task brain_tumor
 ```
@@ -165,7 +165,7 @@ python tsne_analysis.py \
 Or re-run t-SNE plots for all existing embedding files at once:
 
 ```
-python tsne_analysis.py --all
+python src/tsne_analysis.py --all
 ```
 
 Output:

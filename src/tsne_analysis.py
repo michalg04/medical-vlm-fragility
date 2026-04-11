@@ -22,9 +22,9 @@ from transformers import AutoProcessor, AutoModelForImageTextToText
 def pretty_model_name(model_key: str) -> str:
     mapping = {
         "medgemma": "MedGemma",
-        "gemma3": "Gemma-3",
-        "llava16": "LLaVA-1.6",
-        "llava_med": "LLaVA-Med",
+        "gemma": "Gemma-3",
+        "llava": "LLaVA-1.6",
+        "llava-med": "LLaVA-Med",
     }
     return mapping.get(model_key, model_key.replace("_", " ").title())
 
@@ -79,15 +79,15 @@ MODEL_REGISTRY = {
         "hf_id": "google/medgemma-4b-it",
         "family": "gemma",
     },
-    "gemma3": {
+    "gemma": {
         "hf_id": "google/gemma-3-4b-it",
         "family": "gemma",
     },
-    "llava16": {
+    "llava": {
         "hf_id": "llava-hf/llava-v1.6-mistral-7b-hf",
         "family": "llava",
     },
-    "llava_med": {
+    "llava-med": {
         "hf_id": "wnkh/llava-med-v1.5-mistral-7b-hf",
         "family": "llava",
     },
@@ -457,6 +457,15 @@ def extract_gemma_features_single(
             kwargs["image_sizes"] = proc["image_sizes"]
 
         feats = model.get_image_features(**kwargs)
+
+        # unwrap model output objects (e.g. BaseModelOutputWithPooling)
+        if not torch.is_tensor(feats):
+            if hasattr(feats, "pooler_output") and feats.pooler_output is not None:
+                feats = feats.pooler_output
+            elif hasattr(feats, "last_hidden_state"):
+                feats = feats.last_hidden_state
+            else:
+                raise RuntimeError(f"Cannot extract tensor from get_image_features output: {type(feats)}")
 
         if feats.ndim == 3:
             pooled = feats.mean(dim=1)
