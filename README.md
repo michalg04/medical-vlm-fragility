@@ -1,8 +1,5 @@
 # Medical VQA Evaluation Pipeline
 
-Benchmarks vision-language models (VLMs) on binary medical image classification
-across four tasks:
-
 | Task | Dataset | Positive class |
 |---|---|---|
 | `brain_tumor` | tanzuhuggingface/brainmri | tumor |
@@ -10,8 +7,7 @@ across four tasks:
 | `skin_cancer` | Falah/skin-cancer | malignant |
 | `histo_idc` | dbzadnen/breast-histopathology-images | IDC |
 
-Models tested: `medgemma`, `gemma`, `llava`, `llava-med`
-(aliases map to full HuggingFace model IDs in `config.py`)
+Models available `medgemma`, `gemma`, `llava`, `llava-med`
 
 ---
 
