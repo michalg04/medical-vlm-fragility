@@ -1,11 +1,6 @@
 # Medical VQA Evaluation Pipeline
 
-| Task | Dataset | Positive class |
-|---|---|---|
-| `brain_tumor` | tanzuhuggingface/brainmri | tumor |
-| `pneumonia` | danjacobellis/chexpert | pneumonia |
-| `skin_cancer` | Falah/skin-cancer | malignant |
-| `histo_idc` | dbzadnen/breast-histopathology-images | IDC |
+Tasks: `brain_tumor`, `pneumonia`, `skin_cancer`, `histo_idc`
 
 Models available `medgemma`, `gemma`, `llava`, `llava-med`
 
