@@ -89,7 +89,11 @@ def gen_w_img(pipe, model_id: str, prompt: str, image) -> str:
         {"type": "image", "image": image},
         {"type": "text",  "text": prompt},
     ]}]
-    out = pipe(text=messages, max_new_tokens=MAX_NEW_TOKENS, return_full_text=False, do_sample=DO_SAMPLE)
+    out = pipe(
+        text=messages,
+        return_full_text=False,
+        generate_kwargs={"max_new_tokens": MAX_NEW_TOKENS, "do_sample": DO_SAMPLE},
+    )
     if isinstance(out, list) and out and isinstance(out[0], dict):
         gt = out[0].get("generated_text", None)
         if isinstance(gt, list) and gt and isinstance(gt[-1], dict) and "content" in gt[-1]:
