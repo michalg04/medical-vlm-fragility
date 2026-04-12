@@ -1,8 +1,45 @@
-# Medical VQA Evaluation Pipeline
+# Fragility in Medically Fine-Tuned Vision–Language Models
 
-Tasks: `brain_tumor`, `pneumonia`, `skin_cancer`, `histo_idc`
+This repository contains code for the paper:
 
-Models available `medgemma`, `gemma`, `llava`, `llava-med`
+**"Is There Knowledge Left to Extract? Evidence of Fragility in Medically Fine-Tuned Vision-Language Models"**
+
+<img width="1112" height="358" alt="dataset_overview" src="https://github.com/user-attachments/assets/b1815f20-1b50-413a-ae40-a233d70542ef" />
+
+---
+
+We evaluate whether medical fine-tuning improves robustness and clinical reasoning in VLMs across:
+- Closed-form VQA evaluation across prompt variants
+- Prompt sensitivity analysis across prompt types
+- Refusal-aware evaluation
+- Description-based pipeline (image → text → diagnosis)
+- Vision encoder embedding analysis (t-SNE separability)
+
+---
+
+## Models
+
+| Alias | Model |
+|---|---|
+| `medgemma` | MedGemma 4B |
+| `gemma` | Gemma-3 4B Instruct |
+| `llava` | LLaVA v1.6 (Mistral 7B) |
+| `llava-med` | LLaVA-Med v1.5 |
+
+## Tasks
+
+| Task | Modality |
+|---|---|
+| `brain_tumor` | Brain MRI |
+| `pneumonia` | Chest X-ray |
+| `skin_cancer` | Dermatoscopy |
+| `histo_idc` | Histopathology |
+
+## Metrics
+
+- **Accuracy, sensitivity, specificity, F1** — per prompt
+- **Refusal rate** — fraction of ambiguous / refused responses
+- **Prompt variance** — accuracy std across prompt variants
 
 ---
 
@@ -154,4 +191,14 @@ Output:
 ```
 results/{model}_{task}_embeddings_tsne.png
 ```
+
+---
+
+## Citation
+
+    @misc{mclaughlin2026fragilitymedicalvlms,
+      title={Is There Knowledge Left to Extract? Evidence of Fragility in Medically Fine-Tuned Vision-Language Models},
+      author={Oliver McLaughlin and Daniel Shubin and Carsten Eickhoff and Ritambhara Singh and William Rudman and Michal Golovanevsky},
+      year={2026}
+    }
 
