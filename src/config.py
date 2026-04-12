@@ -40,9 +40,6 @@ class DatasetConfig:
     # Desc eval prompt variants (templates with {desc} placeholder)
     desc_prompt_variants: Dict[str, str] = field(default_factory=dict)
 
-
-# --- Dataset definitions ---
-
 BRAIN_TUMOR = DatasetConfig(
     name="brain_tumor",
     class_name="BrainTumor",
@@ -282,8 +279,6 @@ You must respond with exactly one word: MALIGNANT, BENIGN, or AMBIGUOUS. Nothing
         ),
     },
 )
-
-# --- Registries ---
 
 ALL_DATASETS: Dict[str, DatasetConfig] = {
     cfg.name: cfg for cfg in [BRAIN_TUMOR, PNEUMONIA, SKIN_CANCER, HISTO_IDC]
